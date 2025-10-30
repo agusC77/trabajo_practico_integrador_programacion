@@ -1,10 +1,21 @@
-with open("paises.txt","r") as contenido:
-    listar_paises = contenido.readlines()
-    for pais in listar_paises:
-        print(pais)
+from edicion_archivo import *
+
+# ===========================================================================================================================
+
+with open("paises.txt", "r") as contenido:
+    lista_paises = contenido.readlines()
+for pais in lista_paises:
+    print(pais)
+
+# Genera error 
+#with open("pais_continente.txt", "r") as archivo:
+#    pais_continente = archivo.readlines()
+#for pais in pais_continente:
+#    print(pais)
+# ===========================================================================================================================
+
 # Menú principal
-enunciado = True
-while enunciado == True:
+while True:
     print("==============================")
     print("            MENU")
     print(" 1) Agregar paises")
@@ -21,12 +32,18 @@ while enunciado == True:
     match opcion:
         
         case "1":
-            # Aca debemos poner una función que nos permita añadir países por nombre
-            pass
+            crear_archivo(lista_paises)
+
+# ===========================================================================================================================
+
         case "2":
-            # Menú para que el usuario elija como filtrar los países osea si elije la opción 2 mostrara 
-            # le mostrara los países con mayor ploblación, menor población, promedio de poblacón, a elección 
-            # y con la misma metodolgía con las otras opciones
+            # Función para ver la información de un país ingresando solo su nombre
+            pass
+
+# ===========================================================================================================================
+
+        case "3":
+            # Menú para que el usuario elija como filtrar los países 
             print(" 1) Filtrar paises de un continente")
             print(" 2) filtrar paises por rango de poblacion")
             print(" 3) Filtrar paises por rango de superficie")
@@ -38,7 +55,8 @@ while enunciado == True:
                     pass
                 case "3":
                     pass
-        case "3":
+# ===========================================================================================================================
+        case "4":
             # Menu para que el usuario vea todos los países ordenados por nombre, población y superficie
             print(" 1) Ordenar en orden alfabético")
             print(" 2) Ordenar países por rango de población")
@@ -66,19 +84,32 @@ while enunciado == True:
                                 print(" Error, opción inválida debes ingresar 1 o 2")
                 case "3":
                     pass
-        case "4":
-            pass
+
+# ===========================================================================================================================
+
         case "5":
             # Aca debemos poner una función que nos permita añadir países por nombre
             pass
+
+# ===========================================================================================================================
+
         case "6":
-            #aca hay que agregar la opcion de editar el codigo
+            #aca hay que agregar la opcion de editar lz información del país
             pass
+
+# ===========================================================================================================================
+
         case "7":
             #aca agregamos una opcion para eliminar un pais de la lista
             pass
+
+# ===========================================================================================================================
+
         case "8":
-            #opcion de salir del programa
-            pass
+            # Opcion de salir del programa
+            break
+
+# ===========================================================================================================================
+
         case _:
-            print("error, ingrese un valor valido del 1 al 8")
+            print("Error, valor inválido, por favor ingrese un número entre 1 y 8")
