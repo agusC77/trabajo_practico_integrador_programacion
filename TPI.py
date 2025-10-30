@@ -2,17 +2,14 @@ from edicion_archivo import *
 
 # ===========================================================================================================================
 
-with open("paises.txt", "r") as contenido:
+with open("paises.csv", "r", encoding="utf-8", newline="") as contenido:
     lista_paises = contenido.readlines()
 for pais in lista_paises:
     print(pais)
 
-# Genera error 
-#with open("pais_continente.txt", "r") as archivo:
-#    pais_continente = archivo.readlines()
-#for pais in pais_continente:
-#    print(pais)
+
 # ===========================================================================================================================
+
 
 # Menú principal
 while True:
@@ -32,7 +29,14 @@ while True:
     match opcion:
         
         case "1":
-            crear_archivo(lista_paises)
+            try:
+                with open("informacion_pais.csv", "r"):
+                    print("El archivo existe")
+                
+            except FileNotFoundError:
+                print("El archivo no existe")
+                print("creando archivo....")
+                crear_archivo(lista_paises)
 
 # ===========================================================================================================================
 
