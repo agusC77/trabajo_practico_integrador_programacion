@@ -1,11 +1,9 @@
 from edicion_archivo import *
-
+from validaciones import *
 # ===========================================================================================================================
 
 with open("paises.csv", "r", encoding="utf-8", newline="") as contenido:
     lista_paises = contenido.readlines()
-for pais in lista_paises:
-    print(pais)
 
 
 # ===========================================================================================================================
@@ -30,13 +28,13 @@ while True:
         
         case "1":
             try:
-                with open("informacion_pais.csv", "r"):
-                    print("El archivo existe")
+                with open("informacion_pais.csv", "r",encoding="utf-8", newline=""):
+                    añadir_paises(lista_paises)
                 
             except FileNotFoundError:
                 print("El archivo no existe")
                 print("creando archivo....")
-                crear_archivo(lista_paises)
+                crear_archivo_paises(lista_paises)
 
 # ===========================================================================================================================
 
@@ -104,9 +102,10 @@ while True:
 # ===========================================================================================================================
 
         case "7":
+            print("ingrese el pais que desea eliminar: ")
+            pais_eliminar = validar_texto()
+            eliminar_pais(lista_paises,pais_eliminar)
             #aca agregamos una opcion para eliminar un pais de la lista
-            pass
-
 # ===========================================================================================================================
 
         case "8":
