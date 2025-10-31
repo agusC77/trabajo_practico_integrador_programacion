@@ -4,7 +4,7 @@ import csv
 # ===========================================================================================================================
 
 # Funcion para crear un archivo que almacenara los paises con los que trabajaremos
-def aniadir_paises(paises):
+def agregar_paises(paises):
     nombre_pais = ""
     poblacion = 0
     superficie = 0
@@ -60,7 +60,7 @@ def aniadir_paises(paises):
                 print()
 
                 # Se ingresa estos valores como una nueva linea del archivo
-                escritor.writerow([nombre_pais, continente, poblacion, superficie, "\n"])
+                escritor.writerow([nombre_pais, continente, poblacion, superficie])
 
             # El usuario decide si agregar más paises o no
             opcion = ""
