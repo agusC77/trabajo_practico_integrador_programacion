@@ -1,6 +1,7 @@
 def numero_positivo():
     try:
         numero = input("Esperando ingreso: ").strip()
+        # El número ingresado se pasa a float para verificar que sea un número válido
         numero_aux = float(numero)
         return numero
     except ValueError:
@@ -10,6 +11,8 @@ def numero_positivo():
         print("- Caracteres especiales")
         print("- Valores negativos")
         print("- El campo vacío")
+
+#==============================================================================================================================
 
 def validar_texto():
     while True:
@@ -28,3 +31,5 @@ def validar_texto():
             print("-caracteres especiales")
             print("-numeros")
             print("-el campo vacio")
+
+#==============================================================================================================================

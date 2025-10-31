@@ -1,6 +1,10 @@
 from edicion_archivo import *
 from validaciones import *
+
+import os
+print("Directorio actual:", os.getcwd())
 # ===========================================================================================================================
+
 
 with open("paises.csv", "r", encoding="utf-8", newline="") as contenido:
     lista_paises = contenido.readlines()
@@ -23,18 +27,12 @@ while True:
     print(" 8) Salir del menu")
     print("==============================")
     opcion = input(" Elija la opción deseada: ")
+    print()
 
     match opcion:
         
         case "1":
-            try:
-                with open("informacion_pais.csv", "r",encoding="utf-8", newline=""):
-                    añadir_paises(lista_paises)
-                
-            except FileNotFoundError:
-                print("El archivo no existe")
-                print("creando archivo....")
-                crear_archivo_paises(lista_paises)
+            aniadir_paises(lista_paises)
 
 # ===========================================================================================================================
 
@@ -96,16 +94,33 @@ while True:
 # ===========================================================================================================================
 
         case "6":
-            #aca hay que agregar la opcion de editar lz información del país
-            pass
+            #aca hay que agregar la opcion de editar la información del país
+            try:
+                with open("informacion_pais.csv", "r",encoding="utf-8", newline=""):
+                    pass
+
+                while opcion not in ["1","2"]:
+                    print("Ingrese el nombre del país a modificar")
+                    pais_modificar = validar_texto()
+                    modificar_archivo(pais_modificar)
+
+                    # EL usuario elije si desea modificar o no otro país
+                    print()
+                    print(" ¿Desea modificar otro archivo?")
+                    print(" 1) Si")
+                    print(" 2) No")
+                    opcion = input(" Esperando elección: ")
+                
+            except FileNotFoundError:
+                pass
 
 # ===========================================================================================================================
 
         case "7":
             print("ingrese el pais que desea eliminar: ")
             pais_eliminar = validar_texto()
-            eliminar_pais(lista_paises,pais_eliminar)
-            #aca agregamos una opcion para eliminar un pais de la lista
+            eliminar_pais(pais_eliminar)
+
 # ===========================================================================================================================
 
         case "8":

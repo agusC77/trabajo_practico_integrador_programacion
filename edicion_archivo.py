@@ -1,111 +1,94 @@
-from validaciones import numero_positivo
+from validaciones import *
 import csv
-# Funcion para crear un archivo que almacenara los paises con los que trabajaremos
-def crear_archivo_paises(pais):
-    nombre_pais = ""
-    poblacion = 0
-    superficie = 0
-    opcion = ""
-    existe = False
-    with open("informacion_pais.csv", "w",encoding="utf-8", newline="") as archivo: #"informacion.csv" es el archivo que se va a generar desde 0
-        escritor = csv.writer(archivo)
-        escritor.writerow(["nombre_pais", "continente","poblacion","superficie"]) # encabezado del archivo
-        # EL usuario agregara todos los países que desee
-        enunciado = True
-        while enunciado == True:
-            print(" Ingrese el nombre del país a agregar: ")
-            nombre_pais = input("ingrese el nombre del pais: ").lower()
-            # Verifica si el país que esta intentando ingresar existe, si no es asi se informa que el país no existe y se 
-            # vuelve a pedir que ingreses un país
-            for i in pais:
-                existe = False
-                lista = i.split(",")
-                if lista[0] == nombre_pais:
-                    print(f"Ingrese la población de {nombre_pais}:")
-                    poblacion = numero_positivo()
-                    print(f"Ingrese la superficie de {nombre_pais}:")
-                    superficie = numero_positivo()
-                    escritor.writerow([nombre_pais, lista[1].strip(), poblacion, superficie])
-                    existe = True
-                    break
-
-            if not existe:
-                print(f"Error, el país {nombre_pais} no existe.")
-                continue
-
-            # El usuario indica si quiere agregar o no otro país (Falta "validar" que el usuario ingrese si o si 1 o 2)
-            print()
-            print("Elija la opción deseada:")
-            print("1) Agregar país")
-            print("2) Salir")
-            opcion = input("Esperando elección: ")
-            while opcion not in ["1","2"]:
-                print("error, elija una de las siguientes opciones: ")
-                print("1) Agregar país")
-                print("2) Salir")
-                opcion = input("ingrese la opcion deseada: ")
-            print()
-            if opcion == "1":
-                enunciado == True
-                continue
-
-            elif opcion == "2":
-                break
 
 # ===========================================================================================================================
 
-#la segunda funcion sirve para usar el archivo creado previamente y agregarle mas paises a los ya existentes
-def añadir_paises(pais):
+# Funcion para crear un archivo que almacenara los paises con los que trabajaremos
+def aniadir_paises(paises):
     nombre_pais = ""
     poblacion = 0
     superficie = 0
     opcion = ""
+    continente = ""
     existe = False
-    with open("informacion_pais.csv", "a",encoding="utf-8", newline="") as archivo: #"informacion.csv" es el archivo creado en la funcion anterior al que se le van a agregar mas paises
-        escritor = csv.writer(archivo)
-        # EL usuario agregara todos los países que desee
-        enunciado = True
-        while enunciado == True:
-            print(" Ingrese el nombre del país a agregar: ")
-            nombre_pais = input("ingrese el nombre del pais: ").lower()
-            # Verifica si el país que esta intentando ingresar existe, si no es asi se informa que el país no existe y se 
-            # vuelve a pedir que ingreses un país
-            for i in pais:
-                existe = False
-                lista = i.split(",")
-                if lista[0] == nombre_pais:
-                    print(f"Ingrese la población de {nombre_pais}:")
+
+    while True:
+        try:
+            with open("informacion_pais.csv", "r",encoding="utf-8", newline="") as archivo:
+                lector = csv.reader(archivo)
+                linea_archivo = list(lector)
+            
+            with open("informacion_pais.csv", "a",encoding="utf-8", newline="") as archivo:
+                escritor = csv.writer(archivo)
+                # El usuario ingresa el nombre del país a agregar
+                while True:
+                    existe = False
+                    print("Ingrese el país a agregar:")
+                    nombre_pais =  validar_texto()
+
+                    # Verifica que este páis no se haya ingeresado antes
+
+                    # Verifica que el país exista
+                    for info_pais in paises:
+                        lista = info_pais.split(",")
+                        if lista[0] == nombre_pais:
+                            existe = True
+                            continente = lista[1]
+                            break
+
+                    if existe:
+                        break
+                    else:
+                        print(f"Error, el país {nombre_pais} no existe")
+                        print()
+
+                # El usuario ingresa la población del país
+                while True:
+                    print(f"Ingrese la población de {nombre_pais}")
                     poblacion = numero_positivo()
-                    poblacion = int(poblacion)
-                    print(f"Ingrese la superficie de {nombre_pais}:")
-                    superficie = numero_positivo()
-                    escritor.writerow([nombre_pais, lista[1].strip(), poblacion, superficie])
-                    existe = True
-                    break
+                    # Esto permite verificar que el usuario ingrese un entero positivo
+                    if not poblacion.isdigit():
+                        print("Error, valor inválido, por favor ingrese un número entero positivo.")
+                        print()
+                        continue
+                    else:
+                        break
 
-            if not existe:
-                print(f"Error, el país {nombre_pais} no existe.")
-                continue
+                # El usuario ingresa la superficie del país
+                print(f"Ingrese la superficie de {nombre_pais}:")
+                superficie = numero_positivo()
+                print()
 
-            # El usuario indica si quiere agregar o no otro país (Falta "validar" que el usuario ingrese si o si 1 o 2)
-            print()
-            print("Elija la opción deseada:")
-            print("1) Agregar país")
-            print("2) Salir")
-            opcion = input("Esperando elección: ")
-            while opcion not in ["1","2"]:
-                print("error, elija una de las siguientes opciones: ")
-                print("1) Agregar país")
-                print("2) Salir")
-                opcion = input("ingrese la opcion deseada: ")
-            print()
-            if opcion == "1":
-                enunciado == True
-                continue
+                # Se ingresa estos valores como una nueva linea del archivo
+                escritor.writerow([nombre_pais, continente, poblacion, superficie, "\n"])
 
-            elif opcion == "2":
+            # El usuario decide si agregar más paises o no
+            opcion = ""
+            while opcion not in ["1", "2"]:
+                print("¿Desea agregar más países?")
+                print(" 1) Si")
+                print(" 2) No")
+                opcion = input("Esperando elección")
+            if opcion == "2":
                 break
-def eliminar_pais(paises,eliminar):
+
+        # En caso de que el archivo no exista, lo crea, agrega el encabezado y luego vuelve a repetir el bucle, debido a que 
+        # al crearse el archivo en la proxima iteración cuando intente leerlo no generara error y podremos agregar paises
+        # de esta forma podemos reutilizar código 
+        except FileNotFoundError:
+            print("El archivo no existe")
+            print("Creando archivo....")
+            print()
+            with open("informacion_pais.csv", "w",encoding="utf-8", newline="") as archivo:
+                escritor = csv.writer(archivo)
+                # Encabezado
+                escritor.writerow(["País","Continente","Población","Superficie"])
+
+
+# ===========================================================================================================================
+
+
+def eliminar_pais(eliminar):
     with open("informacion_pais.csv", "r",encoding="utf-8", newline="") as archivo:
         lector = csv.reader(archivo)
         lista_paises = list(lector)
@@ -116,3 +99,59 @@ def eliminar_pais(paises,eliminar):
             else:
                 escritor = csv.writer(archivo)
                 escritor.writerow(pais)
+
+
+# ===========================================================================================================================
+
+# Función para modificar la población o superficie de un país a elecón del usuario
+def modificar_archivo(pais_modificar):
+    eleccion = ""
+
+    with open("informacion_pais.csv", "r",encoding="utf-8", newline="") as archivo:
+        lector = csv.reader(archivo)
+        lista_paises = list(lector)
+
+    while True:
+        # El usuario indicara lo que quiere modificar
+        while eleccion not in ["1", "2", "3"]:
+            print("¿Qué deseas modificar?")
+            print(" 1) Población")
+            print(" 2) Superficie")
+            print(" 3) Todas la anteriores")
+            eleccion = input("Esperando elección: ")
+            print()
+            if eleccion not in ["1", "2", "3"]:
+                print("Error, valor inválido, por favor ingrese un número entre 1 y 3")
+        
+        # Sobreescribe el archivo con los nuevos datos
+        with open("informacion_pais.csv", "w",encoding="utf-8", newline="") as archivo:
+            escritor = csv.writer(archivo)
+            # Reescribira todas las lineas del archivo, en el caso de que se encuentre el país que se desea modificar
+            # modificara su población o superficie, si no lo encuentra dejara la linea como estaba
+            for informacion_pais in lista_paises:
+                if informacion_pais[0] == pais_modificar:
+                    match eleccion:
+                        case "1":
+                            # Se modifica la población del país
+                            print(f"Ingrese cuánta población tiene {informacion_pais[0]}")
+                            informacion_pais[2] = numero_positivo()
+                            escritor.writerow([informacion_pais])
+                            break
+                        case "2":
+                            # Se modifica la superficie del país
+                            print(f"Ingrese la superficie de {informacion_pais[0]}")
+                            informacion_pais[3] = numero_positivo()
+                            escritor.writerow([informacion_pais])
+                            break
+                        case "3":
+                            # Se modifica la población del país
+                            print(f"Ingrese cuánta población tiene {informacion_pais[0]}")
+                            informacion_pais[2] = numero_positivo()
+                            # Se modifica la superficie del país
+                            print(f"Ingrese la superficie de {informacion_pais[0]}")
+                            informacion_pais[3] = numero_positivo()
+                            escritor.writerow([informacion_pais])
+                            break
+                else:
+                    escritor.writerow(informacion_pais)
+            break
