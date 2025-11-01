@@ -100,71 +100,117 @@ def agregar_paises(paises):
 
 # ===========================================================================================================================
 
-
+# Función para elmiminar un país del archivo
 def eliminar_pais(eliminar):
+    # Variable para seber si el país que se desea eliminar esta o no en la lista
+    esta = False
+    # Abre el archivo en modo lectura y almacena sus lineas como listas en una lista que almacenara todas las demas
     with open("informacion_pais.csv", "r",encoding="utf-8", newline="") as archivo:
         lector = csv.reader(archivo)
         lista_paises = list(lector)
-    with open("informacion_pais.csv", "w",encoding="utf-8", newline="") as archivo:
+        # Rvisa en el primer elemento de cada lista el país a eliminar 
         for pais in lista_paises:
             if pais[0] == eliminar:
-                continue
-            else:
-                escritor = csv.writer(archivo)
-                escritor.writerow(pais)
-
+                esta = True
+                break
+    # Si lo encuentra, se sobreescribira el archivo, si no lo encuentra le dira al usuario que
+    # el país que esta buscando no se encuentra en el archivo
+    if esta:
+        # Sobreescribe el archivo linea por linea
+        with open("informacion_pais.csv", "w",encoding="utf-8", newline="") as archivo:
+            # Accede al primer índice de todas las listas para verificar que el país que desee eliminar se encuentre em la lista
+            # En caso de encontrar el país lo elimina si no lo encuentra no hace nada
+            for pais in lista_paises:
+                if pais[0] == eliminar:
+                    continue
+                else:
+                    escritor = csv.writer(archivo)
+                    escritor.writerow(pais)
+        print(f"El país {eliminar.title()} fue eliminado del archivo.")
+        print()
+    else:
+        print(f"El país {eliminar.title()} no se puede eliminar debido a que no se encuentra en la lista.")
+        print()
 
 # ===========================================================================================================================
 
 # Función para modificar la población o superficie de un país a elecón del usuario
 def modificar_archivo(pais_modificar):
-    eleccion = ""
+    encabezado = ["País","Continente","Población","Superficie"]
+    poblacion = ""
+    superficie = ""
+    elceccion = ""
 
-    with open("informacion_pais.csv", "r",encoding="utf-8", newline="") as archivo:
-        lector = csv.reader(archivo)
+    # Esto nos permite almacenar las lineas del archivo para poder modificar algún valor o para sobreescribir el archivo
+    with open("informacion_pais.csv", "r", encoding="utf-8", newline="") as archivo:
+        lector = csv.DictReader(archivo)
         lista_paises = list(lector)
 
-    while True:
-        # El usuario indicara lo que quiere modificar
-        while eleccion not in ["1", "2", "3"]:
-            print("¿Qué deseas modificar?")
-            print(" 1) Población")
-            print(" 2) Superficie")
-            print(" 3) Todas la anteriores")
-            eleccion = input("Esperando elección: ")
-            print()
-            if eleccion not in ["1", "2", "3"]:
-                print("Error, valor inválido, por favor ingrese un número entre 1 y 3")
-        
-        # Sobreescribe el archivo con los nuevos datos
-        with open("informacion_pais.csv", "w",encoding="utf-8", newline="") as archivo:
-            escritor = csv.writer(archivo)
-            # Reescribira todas las lineas del archivo, en el caso de que se encuentre el país que se desea modificar
-            # modificara su población o superficie, si no lo encuentra dejara la linea como estaba
-            for informacion_pais in lista_paises:
-                if informacion_pais[0] == pais_modificar:
-                    match eleccion:
-                        case "1":
-                            # Se modifica la población del país
-                            print(f"Ingrese cuánta población tiene {informacion_pais[0]}")
-                            informacion_pais[2] = numero_positivo()
-                            escritor.writerow([informacion_pais])
-                            break
-                        case "2":
-                            # Se modifica la superficie del país
-                            print(f"Ingrese la superficie de {informacion_pais[0]}")
-                            informacion_pais[3] = numero_positivo()
-                            escritor.writerow([informacion_pais])
-                            break
-                        case "3":
-                            # Se modifica la población del país
-                            print(f"Ingrese cuánta población tiene {informacion_pais[0]}")
-                            informacion_pais[2] = numero_positivo()
-                            # Se modifica la superficie del país
-                            print(f"Ingrese la superficie de {informacion_pais[0]}")
-                            informacion_pais[3] = numero_positivo()
-                            escritor.writerow([informacion_pais])
-                            break
+    while not elceccion in ["1", "2", "3"]:
+        print("------------------------------")
+        print("¿ Qué datos deseas modificar?")
+        print(" 1) Población")
+        print(" 2) Superficie")
+        print(" 3) Población y superficie")
+        elceccion = input("Esperando elección: ")
+        print("------------------------------")
+
+    
+    match elceccion:
+        case "1":
+            # El usuario ingresa la población del país
+            while True:
+                print(f"Ingrese la población de {pais_modificar.title()}")
+                poblacion = numero_positivo()
+                print()
+                # Esto permite verificar que el usuario ingrese un entero positivo
+                if not poblacion.isdigit():
+                    print("Error, valor inválido, por favor ingrese un número entero positivo.")
+                    print()
+                    continue
                 else:
-                    escritor.writerow(informacion_pais)
-            break
+                    break
+            # Modifica el valor de la población
+            for diccionario in lista_paises:
+                if diccionario["País"] == pais_modificar:
+                    diccionario["Población"] = poblacion
+
+        case "2":
+            print(f"Ingrese la superficie de {pais_modificar.title()}:")
+            superficie = numero_positivo()
+                        # Modifica el valor de la población
+            for diccionario in lista_paises:
+                if diccionario["País"] == pais_modificar:
+                    diccionario["Superficie"] = superficie
+            
+        case "3":
+            # El usuario ingresa la población del país
+            while True:
+                print(f"Ingrese la población de {pais_modificar.title()}")
+                poblacion = numero_positivo()
+                print()
+                # Esto permite verificar que el usuario ingrese un entero positivo
+                if not poblacion.isdigit():
+                    print("Error, valor inválido, por favor ingrese un número entero positivo.")
+                    print()
+                    continue
+                else:
+                    break
+            
+            # Modifica el valor de la población
+            for diccionario in lista_paises:
+                if diccionario["País"] == pais_modificar:
+                    diccionario["Población"] = poblacion
+            print(f"Ingrese la superficie de {pais_modificar.title()}:")
+            superficie = numero_positivo()
+                        # Modifica el valor de la población
+            for diccionario in lista_paises:
+                if diccionario["País"] == pais_modificar:
+                    diccionario["Superficie"] = superficie
+
+    with open("informacion_pais.csv", "w", encoding="utf-8", newline="") as archivo:
+        escritor = csv.DictWriter(archivo, fieldnames= encabezado)
+        # Vuelve a escribir el encabezado
+        escritor.writeheader()
+        # Vuelve a escribir la lisneas de código pero con los valores modificados
+        escritor.writerows(lista_paises)
