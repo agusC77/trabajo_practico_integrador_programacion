@@ -212,5 +212,5 @@ def modificar_archivo(pais_modificar):
         escritor = csv.DictWriter(archivo, fieldnames= encabezado)
         # Vuelve a escribir el encabezado
         escritor.writeheader()
-        # Vuelve a escribir la lisneas de código pero con los valores modificados
+        # Vuelve a escribir la lineas de código pero con los valores modificados
         escritor.writerows(lista_paises)
