@@ -1,5 +1,6 @@
 from edicion_archivo import *
 from validaciones import *
+from ver_informacion_paises import ver_informacion_pais
 
 import os
 print("Directorio actual:", os.getcwd())
@@ -32,12 +33,14 @@ while True:
     match opcion:
         
         case "1":
-            aniadir_paises(lista_paises)
+            agregar_paises(lista_paises)
 
 # ===========================================================================================================================
 
         case "2":
-            # Función para ver la información de un país ingresando solo su nombre
+            print("ingrese el nombre del pais a revisar o una parte de el: ")
+            pais_revisar = validar_texto()
+            ver_informacion_pais(pais_revisar)
             pass
 
 # ===========================================================================================================================
@@ -75,7 +78,7 @@ while True:
                         opcion = input(" Elija la opción deseada: ")
                         match opcion:
                             case "1":
-                                # Mosrar lospaíses de mayor a menor
+                                # Mostrar los países de mayor a menor
                                 pass
                             case "2":
                                 # Mostrar los países de menor a mayor
@@ -88,7 +91,7 @@ while True:
 # ===========================================================================================================================
 
         case "5":
-            # Aca debemos poner una función que nos permita añadir países por nombre
+            # Aca debemos poner una función que nos permita ver UNICAMENTE las estadisticas de un pais en especifico
             pass
 
 # ===========================================================================================================================

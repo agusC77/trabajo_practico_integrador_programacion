@@ -4,7 +4,7 @@ import csv
 # ===========================================================================================================================
 
 # Funcion para crear un archivo que almacenara los paises con los que trabajaremos
-def aniadir_paises(paises):
+def agregar_paises(paises):
     nombre_pais = ""
     poblacion = 0
     superficie = 0
