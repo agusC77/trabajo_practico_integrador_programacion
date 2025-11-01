@@ -33,3 +33,18 @@ def validar_texto():
             print("-el campo vacio")
 
 #==============================================================================================================================
+
+def verificar_pais_archivo(pais_ingresado):
+    import csv
+    ya_ingresado = False  # Se inicializa antes del bucle
+    
+    with open("informacion_pais.csv", "r", encoding="utf-8", newline="") as archivo:
+        lector = csv.DictReader(archivo)
+        datos = list(lector)
+    
+    for fila in datos:
+        if fila["País"] == pais_ingresado:
+            ya_ingresado = True
+            break 
+    
+    return ya_ingresado

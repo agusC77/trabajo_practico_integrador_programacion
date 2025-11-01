@@ -8,44 +8,55 @@ def aniadir_paises(paises):
     nombre_pais = ""
     poblacion = 0
     superficie = 0
-    opcion = ""
+    salir = ""
     continente = ""
     existe = False
+    encabezado = ["País","Continente","Población","Superficie"]
+    pais_agregar = {"País": "", "Continente": "", "Poblacion": "", "Superficie": ""}
 
     while True:
         try:
+            # abrimos el archivo en modo lectura solo para verificar que exista, en caso de que no exista va 
+            # hasta el execp y crea el archivo con el encabezado
             with open("informacion_pais.csv", "r",encoding="utf-8", newline="") as archivo:
-                lector = csv.reader(archivo)
-                linea_archivo = list(lector)
-            
+                lector = csv.DictReader(archivo)
+
             with open("informacion_pais.csv", "a",encoding="utf-8", newline="") as archivo:
-                escritor = csv.writer(archivo)
+                escritor = csv.DictWriter(archivo, fieldnames=encabezado)
                 # El usuario ingresa el nombre del país a agregar
                 while True:
-                    existe = False
                     print("Ingrese el país a agregar:")
-                    nombre_pais =  validar_texto()
+                    nombre_pais = validar_texto()
+                    print()
 
-                    # Verifica que este páis no se haya ingeresado antes
+                    # Verifica que el país no se haya ingresado antes
+                    if verificar_pais_archivo(nombre_pais):
+                        # Si ya está en el archivo, mostramos error y pedimos otro
+                        print(f"Error, el país {nombre_pais} ya se encuentra en el archivo.")
+                        print()
+                        continue
 
-                    # Verifica que el país exista
+                    # Verifica si el país existe
+                    existe = False
                     for info_pais in paises:
                         lista = info_pais.split(",")
                         if lista[0] == nombre_pais:
                             existe = True
-                            continente = lista[1]
+                            continente = lista[1].strip()
                             break
-
-                    if existe:
-                        break
-                    else:
-                        print(f"Error, el país {nombre_pais} no existe")
+                    # En caso de que el país no exista, se le avisa al usuario y se vuelve a pedir que ingrese un país
+                    if not existe:
+                        print(f"Error, el país {nombre_pais} no existe, por favor ingrese otro")
                         print()
+                        continue 
+                    else:
+                        break
 
                 # El usuario ingresa la población del país
                 while True:
-                    print(f"Ingrese la población de {nombre_pais}")
+                    print(f"Ingrese la población de {nombre_pais.title()}")
                     poblacion = numero_positivo()
+                    print()
                     # Esto permite verificar que el usuario ingrese un entero positivo
                     if not poblacion.isdigit():
                         print("Error, valor inválido, por favor ingrese un número entero positivo.")
@@ -55,21 +66,23 @@ def aniadir_paises(paises):
                         break
 
                 # El usuario ingresa la superficie del país
-                print(f"Ingrese la superficie de {nombre_pais}:")
+                print(f"Ingrese la superficie de {nombre_pais.title()}:")
                 superficie = numero_positivo()
                 print()
 
                 # Se ingresa estos valores como una nueva linea del archivo
-                escritor.writerow([nombre_pais, continente, poblacion, superficie, "\n"])
+                pais_agregar = {"País": nombre_pais, "Continente": continente, "Población": poblacion, "Superficie": superficie}
+                escritor.writerow(pais_agregar)
 
             # El usuario decide si agregar más paises o no
-            opcion = ""
-            while opcion not in ["1", "2"]:
+            salir = ""
+            while salir not in ["1", "2"]:
                 print("¿Desea agregar más países?")
                 print(" 1) Si")
                 print(" 2) No")
-                opcion = input("Esperando elección")
-            if opcion == "2":
+                salir = input("Esperando elección: ")
+                print()
+            if salir == "2":
                 break
 
         # En caso de que el archivo no exista, lo crea, agrega el encabezado y luego vuelve a repetir el bucle, debido a que 
