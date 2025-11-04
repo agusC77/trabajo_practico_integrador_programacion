@@ -2,9 +2,7 @@ from edicion_archivo import *
 from validaciones import *
 from ver_informacion_paises import ver_informacion_pais
 from filtrar_paises import *
-
 import os
-
 
 print("Directorio actual:", os.getcwd())
 # ===========================================================================================================================
