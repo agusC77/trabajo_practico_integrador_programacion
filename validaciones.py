@@ -28,9 +28,10 @@ def validar_texto():
             
         except ValueError:
             print("el nombre ingresado no puede tener: ")
-            print("-caracteres especiales")
-            print("-numeros")
-            print("-el campo vacio")
+            print("- Números")
+            print("- Puntos")
+            print("- Caracteres especiales")
+            print("- El campo vacio")
 
 #==============================================================================================================================
 

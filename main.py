@@ -1,9 +1,11 @@
 from edicion_archivo import *
 from validaciones import *
 from ver_informacion_paises import ver_informacion_pais
-import os
+from filtrar_paises import *
 
 import os
+
+
 print("Directorio actual:", os.getcwd())
 # ===========================================================================================================================
 
@@ -50,13 +52,24 @@ while True:
         case "3":
             if os.path.exists("informacion_pais.csv"):
                 # Menú para que el usuario elija como filtrar los países 
-                print(" 1) Filtrar paises de un continente")
-                print(" 2) filtrar paises por rango de poblacion")
-                print(" 3) Filtrar paises por rango de superficie")
-                opcion = input(" Elija la opcino deseada: ")
+                opcion = ""
+                while True:
+                    print(" Mostrar país por")
+                    print("  1) Continente")
+                    print("  2) Poblacion")
+                    print("  3) Superficie")
+                    opcion = input(" Elija la opcino deseada: ")
+                    print()
+
+                    if not opcion in ["1", "2", "3"]:
+                        print(f"Error, debes seleccionar una opción entre 1 y 3 ")
+                        print()
+                    else:
+                        break
+
                 match opcion:
                     case "1":
-                        pass
+                        paises_continente()
                     case "2":
                         pass
                     case "3":

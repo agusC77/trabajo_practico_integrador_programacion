@@ -18,7 +18,7 @@ def eliminar_acentos(texto):
 
 # ===========================================================================================================================
 
-#esta funcion sirve para que cuando se seleccione la opcion numero 2 se ejecute el codigo lo siguiente:
+# Esta funcion sirve para que cuando se seleccione la opcion numero 2 se ejecute el codigo lo siguiente:
 def ver_informacion_pais(texto_busqueda): # la funcion recibe el pais al cual, le buscara la informacion
     try:
         with open("informacion_pais.csv", "r", encoding="utf-8", newline="") as archivo: #abre el archivo para leerlo
