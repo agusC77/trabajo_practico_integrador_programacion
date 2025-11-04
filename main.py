@@ -31,6 +31,8 @@ while True:
     opcion = input(" Elija la opción deseada: ")
     print()
 
+# ===========================================================================================================================
+
     match opcion:
         
         case "1":
@@ -45,6 +47,7 @@ while True:
                 ver_informacion_pais(pais_revisar)
             else:
                 print("❌ El archivo no existe.")
+
 # ===========================================================================================================================
 
         case "3":
@@ -69,12 +72,14 @@ while True:
                     case "1":
                         paises_continente()
                     case "2":
-                        pass
+                        paises_poblacion()
                     case "3":
-                        pass
+                        paises_superficie()
             else:
                 print("❌ El archivo no existe.")
+
 # ===========================================================================================================================
+
         case "4":
             if os.path.exists("informacion_pais.csv"):
                 # Menu para que el usuario vea todos los países ordenados por nombre, población y superficie
