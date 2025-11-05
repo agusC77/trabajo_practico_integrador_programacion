@@ -1,6 +1,6 @@
 import csv
 from validaciones import validar_texto
-from ver_informacion_paises import eliminar_acentos 
+from ver_y_ordenar_paises import eliminar_acentos 
 
 #================================================================================================================================
 
@@ -9,32 +9,32 @@ def paises_continente():
     # Variable que almacenara los continentes
     continentes = ["america", "asia", "africa", "europa", "oceania"]
     # Variable para que el usuario elija un continente
-    continente_elejido = ""
+    continente_elegido = ""
     # Variable para verificar que el continente que ingreso el usuario existe
     existe = False
 
     while True:
         print(" Ingrese el nombre de un continente para, mostrar solo los países de ese continente:")
-        continente_elejido = validar_texto()
-        continente_elejido = eliminar_acentos(continente_elejido)
+        continente_elegido = validar_texto()
+        continente_elegido = eliminar_acentos(continente_elegido)
         # Verifica que el usuario haya ingresado un continente exixtesnte
         for continente in continentes:
-            continente == continente_elejido
-            existe = True
-            break
+            if continente == continente_elegido:
+                existe = True
+                break
         if existe:
             break
         else:
-            print(f"{continente_elejido} no es un continente.")
+            print(f"{continente_elegido} no es un continente.")
             print()
 
     with open("informacion_pais.csv", "r", encoding= "utf-8", newline= "") as archivo:
         diccionario = csv.DictReader(archivo)
         lista = list(diccionario)
 
-    # Este mtch es para mostrar correctamente el nombre de los continentes debido a que le quitamos los acentos 
+    # Este match es para mostrar correctamente el nombre de los continentes debido a que le quitamos los acentos 
     # para que el programa siga funcionando a pesar de que no se ingrese  sin acentos
-    match continente_elejido:
+    match continente_elegido:
         case "america":
             print(f" Países de América: ")
         case "asia":
@@ -45,7 +45,7 @@ def paises_continente():
             print(f" Países de Oceanía: ")
     
     for linea in lista:
-        if linea["Continente"] == continente_elejido:
+        if linea["Continente"] == continente_elegido:
             print(f"- {linea["País"].title()}")
 
 #================================================================================================================================

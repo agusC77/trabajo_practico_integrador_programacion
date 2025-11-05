@@ -17,7 +17,7 @@ def agregar_paises(paises):
     while True:
         try:
             # abrimos el archivo en modo lectura solo para verificar que exista, en caso de que no exista va 
-            # hasta el execp y crea el archivo con el encabezado
+            # hasta el except y crea el archivo con el encabezado
             with open("informacion_pais.csv", "r",encoding="utf-8", newline="") as archivo:
                 lector = csv.DictReader(archivo)
 
@@ -108,7 +108,7 @@ def eliminar_pais(eliminar):
     with open("informacion_pais.csv", "r",encoding="utf-8", newline="") as archivo:
         lector = csv.reader(archivo)
         lista_paises = list(lector)
-        # Rvisa en el primer elemento de cada lista el país a eliminar 
+        # Revisa en el primer elemento de cada lista el país a eliminar 
         for pais in lista_paises:
             if pais[0] == eliminar:
                 esta = True

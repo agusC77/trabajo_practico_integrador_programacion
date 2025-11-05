@@ -1,6 +1,6 @@
 from edicion_archivo import *
 from validaciones import *
-from ver_informacion_paises import ver_informacion_pais
+from ver_y_ordenar_paises import *
 from filtrar_paises import *
 import os
 
@@ -89,26 +89,40 @@ while True:
                 opcion = input(" Elija la opción deseada: ")
                 match opcion:
                     case "1":
-                        # Función que ordena países por orden alfabético
-                        pass
+                        mostrar_paises_ordenados_alfabeticamente()
                     case "2":
                         # Permite elejir al usuario si quiere ver todos los paíse ordenados del que tiene menos población 
-                        # al que tiene mayor población y vicebersa
+                        # al que tiene mayor población y viceversa
                         while True:
+                            print("como desea ordenar los paises segun su poblacion?: ")
                             print(" 1) De Menor a mayor")
                             print(" 2) Mayor a menor")
                             opcion = input(" Elija la opción deseada: ")
                             match opcion:
                                 case "1":
-                                    # Mostrar los países de mayor a menor
-                                    pass
+                                    ordenar_segun_poblacion(opcion)
+                                    break
                                 case "2":
-                                    # Mostrar los países de menor a mayor
-                                    pass
+                                    ordenar_segun_poblacion(opcion)
+                                    break
                                 case _:
                                     print(" Error, opción inválida debes ingresar 1 o 2")
                     case "3":
-                        pass
+                        #permite al usuario ver los paises ordenados segun su superficie de menor a mayor o viceversa
+                        while True:
+                            print("como desea ordenar los paises segun su superficie?: ")
+                            print(" 1) De Menor a mayor")
+                            print(" 2) Mayor a menor")
+                            opcion = input(" Elija la opción deseada: ")
+                            match opcion:
+                                case "1":
+                                    ordenar_segun_superficie(opcion)
+                                    break
+                                case "2":
+                                    ordenar_segun_superficie(opcion)
+                                    break
+                                case _:
+                                    print(" Error, opción inválida debes ingresar 1 o 2")
             else:
                 print("❌ El archivo no existe.")
 
@@ -116,8 +130,9 @@ while True:
 
         case "5":
             if os.path.exists("informacion_pais.csv"):
-                # Aca debemos poner una función que nos permita ver UNICAMENTE las estadisticas de un pais en especifico
-                pass
+                print("ingrese el pais al que le quiere revisar las estadisticas")
+                pais_ver_estadisticas = validar_texto()
+                ver_estadisticas(pais_ver_estadisticas)
             else:
                 print("❌ El archivo no existe.")
 
@@ -134,7 +149,7 @@ while True:
                         opcion = ""
                         while not opcion in ["1", "2"]:
                             print()
-                            print("¿Desea modificar otro archivo?")
+                            print("¿Desea modificar otro pais?")
                             print(" 1) Si")
                             print(" 2) No")
                             opcion = input("Esperando elección: ")
