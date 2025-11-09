@@ -43,7 +43,9 @@ def paises_continente():
             print(f" Países de África: ")
         case "oceania":
             print(f" Países de Oceanía: ")
-    
+        case "europa":
+            print(f" Paises de Europa: ")
+            
     for linea in lista:
         if linea["Continente"] == continente_elegido:
             print(f"- {linea["País"].title()}")
