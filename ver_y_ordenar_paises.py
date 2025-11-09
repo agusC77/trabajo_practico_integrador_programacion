@@ -89,18 +89,18 @@ def mostrar_paises_ordenados_alfabeticamente():
 #esta funcion permite ordenar los paises segun su poblacion de menor a mayor o viceversa
 
 def ordenar_segun_poblacion(opcion_elegida):
-    with open("informacion_pais.csv", "r", encoding="utf-8", newline="") as archivo:
+    with open("informacion_pais.csv", "r", encoding="utf-8", newline="") as archivo: #abre el archivo en modo lectura
         lector = csv.DictReader(archivo)
         filas = list(lector)
-    def obtener_poblacion(fila):
+    def obtener_poblacion(fila): #llama a una funcion que transforma el contenido en un "int"
         return int(fila["Población"])
     
-    match opcion_elegida:
+    match opcion_elegida: #segun el valor de la opcion elegida por el usuario en el menu se realiza una de las opciones
         case "1":
             filas.sort(key=obtener_poblacion)
-            print("\n los paises ordenados segun su poblacion de menor a mayor:\n")
+            print("\n los paises ordenados segun su poblacion de menor a mayor:\n") #utiliza "sort" para ordenar los paises en orden menor-mayor segun su poblacion
         case "2":
-            filas.sort(key=obtener_poblacion, reverse=True)
+            filas.sort(key=obtener_poblacion, reverse=True) #utiliza "sort" y "reverse" para ordenar los paises en orden mayor-menor segun su poblacion
             print("\n los paises ordenados segun su poblacion de mayor a menor:\n")
     for pais in filas:
         print(f"{pais['País']} - {pais['Continente']} - poblacion: {pais['Población']} - superficie: {pais['Superficie']}")
@@ -110,36 +110,37 @@ def ordenar_segun_poblacion(opcion_elegida):
 #esta funcion permite ordenar los paises segun su superficie de menor a mayor o viceversa
 
 def ordenar_segun_superficie(opcion_elegida):
-    with open("informacion_pais.csv", "r", encoding="utf-8", newline="") as archivo:
+    with open("informacion_pais.csv", "r", encoding="utf-8", newline="") as archivo: #abre el archivo en modo lectura
         lector = csv.DictReader(archivo)
         filas = list(lector)
-    def obtener_superficie(fila):
+    def obtener_superficie(fila): #llama a una funcion que transforma el contenido en un "int"
         return int(fila["Superficie"])
     
-    match opcion_elegida:
+    match opcion_elegida: #segun el valor de la opcion elegida se realiza una de las opciones:
         case "1":
-            filas.sort(key=obtener_superficie)
+            filas.sort(key=obtener_superficie) #utiliza "sort" para ordenar los paises en orden menor-mayor segun su superficie
             print("\n los paises ordenados segun su superficie de menor a mayor:\n")
         case "2":
-            filas.sort(key=obtener_superficie, reverse=True)
+            filas.sort(key=obtener_superficie, reverse=True) #utiliza "sort" y "reverse" para ordenar los paises en orden mayor-menor segun su superficie
             print("\n los paises ordenados segun su superficie de mayor a menor:\n")
-    for pais in filas:
+    for pais in filas: #utiliza un bucle para imprimir los paises ya ordenados
         print(f"{pais['País']} - {pais['Continente']} - poblacion: {pais['Población']} - superficie: {pais['Superficie']}")
 
 # ===========================================================================================================================
 
 #esta funcion sirve para ver unicamente las estadisticas de un pais elegido
+
 def ver_estadisticas(pais_elegido):
     existe = False
-    with open("informacion_pais.csv", "r", encoding="utf-8", newline="") as archivo:
+    with open("informacion_pais.csv", "r", encoding="utf-8", newline="") as archivo: #abre el archivo en modo de lectura
         lector = csv.DictReader(archivo)
         filas = list(lector)
-    for pais in filas:
-        if pais["País"].lower() == pais_elegido:
+    for pais in filas: #utiliza un bucle "for" con el objetivo de validar si el pais seleccioando existe o no en el archivo
+        if pais["País"].lower() == pais_elegido: #si el pais existe se imprimiran los siguientes mensajes:
             print(f"----------{pais_elegido}-----------")
             print(f"poblacion: {pais['Población']}")
             print(f"superficie: {pais["Superficie"]}")
             existe = True
             break
-    if not existe:
+    if not existe: #si el pais no existe, se imprimira el siguiente mensaje
         print(f"el pais {pais_elegido} no existe, no esta ingresado en el archivo o esta mal escrito su nombre")
