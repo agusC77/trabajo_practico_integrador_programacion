@@ -28,6 +28,7 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
 2) ejecutar el archivo main.py, cuando se ejecute se presentara el siguiente menu de opciones:
 
 ==============================
+
             MENU
  1) Agregar paises
  2) Buscar pais por nombre
@@ -37,6 +38,7 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
  6) Editar paises
  7) eliminar pais de la lista
  8) Salir del menu
+
 ==============================
 
 🧩 Ejemplos de uso:
