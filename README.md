@@ -114,6 +114,6 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
 El desarrollo de este sistema permitió aplicar de manera práctica los conocimientos adquiridos sobre estructuras de datos y lógica de programación.
 Además de fortalecer la capacidad técnica, fomentó la colaboración en el trabajo, la organización del código y la resolución de problemas reales mediante la programación.
 
--Link de video explicativo: 
+-Link de video explicativo: https://youtu.be/DYf7LALyDX8
 
 -Link de Git HuB: https://github.com/agusC77/trabajo_practico_integrador_programacion.git
