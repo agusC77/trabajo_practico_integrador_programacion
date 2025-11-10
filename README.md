@@ -1,7 +1,9 @@
 # 💻 Programación 1 
 
 **Tecnicatura Universitaria en Programación**
+
 📍 *Universidad Tecnológica Nacional*
+
 📍 *Trabajo Practico Integrador*
 
 ## ✨ Estudiantes
@@ -28,8 +30,8 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
 
 ## ⚙️ Instrucciones de uso:
 
-1) clonar el repositorio 
-2) ejecutar el archivo main.py, cuando se ejecute se presentara el siguiente menu de opciones:
+1) Clonar el repositorio 
+2) Ejecutar el archivo main.py, cuando se ejecute se presentara el siguiente menu de opciones:
 
 ==============================
             MENU
@@ -90,7 +92,7 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
     
     Elija la opción deseada: 2
 
-    ingrese el nombre del pais a revisar o una parte de el:
+    Ingrese el nombre del pais a revisar o una parte de el:
     esperando texto: arg
 
     Se encontraron 1 coincidencia(s) en el archivo:
