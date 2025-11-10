@@ -65,14 +65,14 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
     Esperando ingreso: 250000000
    
     ¿Desea agregar más países?
+
+   1) Si
    
-     1) Si
-   
-     2) No
+   2) No
    
     Esperando elección: 2
    
-2) **buscar pais**:
+3) **buscar pais**:
 
    ==============================
                MENU
