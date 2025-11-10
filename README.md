@@ -26,6 +26,7 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
 
 1) clonar el repositorio 
 2) ejecutar el archivo main.py, cuando se ejecute se presentara el siguiente menu de opciones:
+
 ==============================
             MENU
  1) Agregar paises
