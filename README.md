@@ -76,14 +76,14 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
 
    ==============================
                MENU
-   1) Agregar paises
-   2) Buscar pais por nombre
-   3) Filtrar paises
-   4) Ordenar paises
-   5) Mostrar Estadistica
-   6) Editar paises
-   7) eliminar pais de la lista
-   8) Salir del menu
+1) Agregar paises
+2) Buscar pais por nombre
+3) Filtrar paises
+4) Ordenar paises
+5) Mostrar Estadistica
+6) Editar paises
+7) eliminar pais de la lista
+8) Salir del menu
    
     ==============================
     
