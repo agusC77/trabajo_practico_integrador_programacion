@@ -42,28 +42,20 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
 
 🧩 Ejemplos de uso:
 1) ingresar paises:
-
     Elija la opción deseada: 1 
-
     El archivo no existe
     Creando archivo....
-
     Ingrese el país a agregar:
     esperando texto: argentina
-
     Ingrese la población de Argentina
     Esperando ingreso: 50000000
-
     Ingrese la superficie de Argentina:
     Esperando ingreso: 250000000
-
     ¿Desea agregar más países?
-   
      1) Si
      2) No
-   
     Esperando elección: 2
-3) buscar pais:
+2) buscar pais:
    ==============================
    MENU
     1) Agregar paises
