@@ -1,11 +1,10 @@
-💻 Programación 1 
-==============================
+#💻 Programación 1 
+
 Tecnicatura Universitaria en Programación
 📍 Universidad Tecnológica Nacional
 📍 Trabajo Practico Integrador
 
-✨ Estudiantes
-==============================
+##✨ Estudiantes
 Nombre: Allende Pablo, Contardi Agustín
 Comisión: 4
 Docentes:
