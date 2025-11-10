@@ -44,7 +44,7 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
 ==============================
 
 🧩 Ejemplos de uso:
-1) ingresar paises:
+1)ingresar paises:
    ==============================
     Elija la opción deseada: 1
    
@@ -72,7 +72,7 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
    
     Esperando elección: 2
    
-3) buscar pais:
+2)buscar pais:
    ==============================
    MENU
     1) Agregar paises
@@ -84,7 +84,7 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
     7) eliminar pais de la lista
     8) Salir del menu
     ==============================
-
+    
     Elija la opción deseada: 2
 
     ingrese el nombre del pais a revisar o una parte de el:
