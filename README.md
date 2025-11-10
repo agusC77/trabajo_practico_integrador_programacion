@@ -1,18 +1,17 @@
-#💻 Programación 1 
+##💻 Programación 1 
 
-Tecnicatura Universitaria en Programación
-📍 Universidad Tecnológica Nacional
-📍 Trabajo Practico Integrador
+**Tecnicatura Universitaria en Programación**
+📍 *Universidad Tecnológica Nacional*
+📍 *Trabajo Practico Integrador*
 
 ##✨ Estudiantes
-Nombre: Allende Pablo, Contardi Agustín
-Comisión: 4
-Docentes:
-Cinthia Rigoni
-Ramiro Hualpa
+**Nombre**: Allende Pablo, Contardi Agustín
+**Comisión: 4**
+##Docentes:
+**Cinthia Rigoni**
+**Ramiro Hualpa**
 
-📘 Descripción del programa
-==============================
+##📘 Descripción del programa
 
 El programa permite gestionar información sobre países a través de un menú interactivo en consola, utilizando archivos CSV para almacenar los datos y ofrece diversas funcionalidades. Tales como:
 
@@ -24,8 +23,8 @@ El programa permite gestionar información sobre países a través de un menú i
 
 El objetivo del proyecto es aplicar los conceptos de la programación aprendidos en este primer cuatrimestre: listas, diccionarios, funciones, condicionales, bucles, validaciones y manejo de archivos
 
-⚙️ Instrucciones de uso:
-==============================
+##⚙️ Instrucciones de uso:
+
 1) clonar el repositorio 
 2) ejecutar el archivo main.py, cuando se ejecute se presentara el siguiente menu de opciones:
 
@@ -42,9 +41,9 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
 
 ==============================
 
-🧩 Ejemplos de uso:
-1)ingresar paises:
-   ==============================
+🧩 ##Ejemplos de uso:
+1) **ingresar paises**:
+
     Elija la opción deseada: 1
    
     El archivo no existe
@@ -71,9 +70,10 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
    
     Esperando elección: 2
    
-2)buscar pais:
+2) **buscar pais**:
+
    ==============================
-   MENU
+               MENU
     1) Agregar paises
     2) Buscar pais por nombre
     3) Filtrar paises
@@ -98,14 +98,12 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
     Población: 5000000
     Superficie: 25000000
 
-👥 Participación de los integrantes:
-==============================
+👥 ##Participación de los integrantes:
 
 Agustin Contardi: Estructura general del programa, menú principal, documentación y edición del informe teórico.
 Pablo Allende: Estructura general del programa, Desarrollo de módulos de filtrado, validaciones y estadísticas.
 
-🏁 Conclusión
-==============================
+🏁 ##Conclusión
 
 El desarrollo de este sistema permitió aplicar de manera práctica los conocimientos adquiridos sobre estructuras de datos y lógica de programación.
 Además de fortalecer la capacidad técnica, fomentó la colaboración en el trabajo, la organización del código y la resolución de problemas reales mediante la programación.
