@@ -4,7 +4,7 @@
 📍 *Universidad Tecnológica Nacional*
 📍 *Trabajo Practico Integrador*
 
-##✨ Estudiantes
+## ✨ Estudiantes
 
 **Nombre**: Allende Pablo, Contardi Agustín
 **Comisión:** 4
