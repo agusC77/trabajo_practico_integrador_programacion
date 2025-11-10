@@ -11,6 +11,7 @@ Cinthia Rigoni
 Ramiro Hualpa
 
 📘 Descripción del programa
+
 El programa permite gestionar información sobre países a través de un menú interactivo en consola, utilizando archivos CSV para almacenar los datos y ofrece diversas funcionalidades. Tales como:
 
 1) Agregar, modificar o eliminar países.
