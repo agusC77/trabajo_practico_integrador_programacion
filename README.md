@@ -66,9 +66,9 @@ El objetivo del proyecto es aplicar los conceptos de la programación aprendidos
    
     ¿Desea agregar más países?
 
-   1) Si
+1) Si
    
-   2) No
+2) No
    
     Esperando elección: 2
    
